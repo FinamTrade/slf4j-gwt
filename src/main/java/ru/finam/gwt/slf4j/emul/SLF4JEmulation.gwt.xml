@@ -1,0 +1,5 @@
+<module>
+    <inherits name="com.google.gwt.logging.Logging"/>
+
+    <super-source/>
+</module>

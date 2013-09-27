@@ -1,0 +1,12 @@
+.gradle/
+build/
+target/
+out/
+
+*.iml
+*.ipr
+*.iws
+.idea/
+
+atlassian-ide-plugin.xml
+.DS_Store

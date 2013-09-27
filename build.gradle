@@ -1,0 +1,60 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'maven'
+
+version = '1.0-SNAPSHOT'
+group = 'ru.finam.gwt'
+
+jar {
+    manifest {
+        attributes(
+                'Implementation-Title': 'slf4j-gwt',
+                'Implementation-Version': version,
+                'Implementation-Vendor': "Investment holding \"FINAM\" CJSC",
+                'Build-Date': new java.text.SimpleDateFormat("HH:mm:ss yyyy/MM/dd").format(new Date()),
+        )
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/java'
+        }
+    }
+}
+
+dependencies {
+    compile "com.google.gwt:gwt-user:2.5.1"
+    compile 'org.slf4j:slf4j-api:1.7.4'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.8'
+}
+
+task srcs(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from project.sourceSets.main.allSource
+}
+
+jar {
+    dependsOn classes
+    from project.sourceSets.main.allSource
+    includes = ['**/*']
+}
+
+uploadArchives {
+    artifacts {
+        archives srcs
+    }
+    repositories {
+        mavenDeployer {
+            repository(url:"http://msk-projects2:81/artifactory/libs-snapshot-local")
+        }
+    }
+}
