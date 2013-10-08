@@ -11,3 +11,4 @@ out/
 *.ipr
 .DS_Store
 atlassian-ide-plugin.xml
+sonatype.properties

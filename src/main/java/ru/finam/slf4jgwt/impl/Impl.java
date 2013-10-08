@@ -1,4 +1,4 @@
-package ru.finam.gwt.slf4j.impl.client;
+package ru.finam.slf4jgwt.impl;
 
 import com.google.gwt.core.client.GWT;
 

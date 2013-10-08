@@ -1,9 +1,0 @@
-<module>
-    <inherits name="com.google.gwt.logging.Logging"/>
-
-    <replace-with class="ru.finam.gwt.slf4j.impl.client.GWTLoggerFactory">
-        <when-type-is class="ru.finam.gwt.slf4j.impl.client.NOPLoggerFactory" />
-        <when-property-is name="gwt.logging.enabled" value="TRUE" />
-    </replace-with>
-
-</module>

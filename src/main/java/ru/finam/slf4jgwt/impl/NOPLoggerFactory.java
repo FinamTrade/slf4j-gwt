@@ -1,4 +1,4 @@
-package ru.finam.gwt.slf4j.impl.client;
+package ru.finam.slf4jgwt.impl;
 
 import org.slf4j.Logger;
 

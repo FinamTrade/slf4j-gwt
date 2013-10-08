@@ -1,11 +1,12 @@
-package ru.finam.gwt.slf4j.impl.client;
+package ru.finam.slf4jgwt.impl;
 
 import org.slf4j.Logger;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public final class GWTLoggerFactory extends NOPLoggerFactory {
-    private final HashMap<String, Logger> loggerMap = new HashMap<String, Logger>();
+    private final Map<String, Logger> loggers = new HashMap<String, Logger>();
 
     @Override
     public Logger getLogger(String name) {
@@ -14,10 +15,10 @@ public final class GWTLoggerFactory extends NOPLoggerFactory {
             name = "";
         }
 
-        Logger logger = loggerMap.get(name);
+        Logger logger = loggers.get(name);
         if (logger == null) {
             logger = new GWTLoggerAdapter(name);
-            loggerMap.put(name, logger);
+            loggers.put(name, logger);
         }
         return logger;
     }

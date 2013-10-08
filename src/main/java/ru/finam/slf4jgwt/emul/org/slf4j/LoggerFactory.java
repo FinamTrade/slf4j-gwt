@@ -24,7 +24,7 @@
  */
 package org.slf4j;
 
-import ru.finam.gwt.slf4j.impl.client.Impl;
+import ru.finam.slf4jgwt.impl.Impl;
 
 /**
  * The <code>LoggerFactory</code> is a utility class producing Loggers for

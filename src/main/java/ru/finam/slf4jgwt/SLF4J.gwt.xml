@@ -1,6 +1,6 @@
 <module>
-    <inherits name="ru.finam.gwt.slf4j.impl.SLF4JImpl"/>
-    <inherits name="ru.finam.gwt.slf4j.emul.SLF4JEmulation"/>
+    <inherits name="com.google.gwt.logging.Logging"/>
+    <inherits name="ru.finam.slf4jgwt.emul.API"/>
 
     <set-property name="gwt.logging.enabled" value="TRUE"/>
     <set-property name="gwt.logging.logLevel" value="INFO"/>
@@ -11,4 +11,11 @@
     <set-property name="gwt.logging.popupHandler" value="DISABLED" />
     <set-property name="gwt.logging.systemHandler" value="DISABLED" />
     <set-property name="gwt.logging.simpleRemoteHandler" value="DISABLED" />
+
+    <source path="impl" />
+
+    <replace-with class="ru.finam.slf4jgwt.impl.GWTLoggerFactory">
+        <when-type-is class="ru.finam.slf4jgwt.impl.NOPLoggerFactory" />
+        <when-property-is name="gwt.logging.enabled" value="TRUE" />
+    </replace-with>
 </module>

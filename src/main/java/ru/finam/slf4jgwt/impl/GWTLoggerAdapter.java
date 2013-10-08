@@ -22,7 +22,7 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
  */
-package ru.finam.gwt.slf4j.impl.client;
+package ru.finam.slf4jgwt.impl;
 
 import org.slf4j.helpers.FormattingTuple;
 import org.slf4j.helpers.MarkerIgnoringBase;
@@ -59,6 +59,7 @@ public class GWTLoggerAdapter extends MarkerIgnoringBase {
      *
      * @return True if this Logger is enabled for level FINEST, false otherwise.
      */
+    @Override
     public boolean isTraceEnabled() {
         return logger.isLoggable(Level.FINEST);
     }
@@ -69,6 +70,7 @@ public class GWTLoggerAdapter extends MarkerIgnoringBase {
      * @param msg
      *          - the message object to be logged
      */
+    @Override
     public void trace(String msg) {
         if (logger.isLoggable(Level.FINEST)) {
             log(Level.FINEST, msg, null);
@@ -89,6 +91,7 @@ public class GWTLoggerAdapter extends MarkerIgnoringBase {
      * @param arg
      *          the argument
      */
+    @Override
     public void trace(String format, Object arg) {
         if (logger.isLoggable(Level.FINEST)) {
             FormattingTuple ft = MessageFormatter.format(format, arg);
@@ -112,6 +115,7 @@ public class GWTLoggerAdapter extends MarkerIgnoringBase {
      * @param arg2
      *          the second argument
      */
+    @Override
     public void trace(String format, Object arg1, Object arg2) {
         if (logger.isLoggable(Level.FINEST)) {
             FormattingTuple ft = MessageFormatter.format(format, arg1, arg2);
@@ -133,6 +137,7 @@ public class GWTLoggerAdapter extends MarkerIgnoringBase {
      * @param argArray
      *          an array of arguments
      */
+    @Override
     public void trace(String format, Object... argArray) {
         if (logger.isLoggable(Level.FINEST)) {
             FormattingTuple ft = MessageFormatter.arrayFormat(format, argArray);
@@ -148,6 +153,7 @@ public class GWTLoggerAdapter extends MarkerIgnoringBase {
      * @param t
      *          the exception (throwable) to log
      */
+    @Override
     public void trace(String msg, Throwable t) {
         if (logger.isLoggable(Level.FINEST)) {
             log(Level.FINEST, msg, t);
@@ -159,6 +165,7 @@ public class GWTLoggerAdapter extends MarkerIgnoringBase {
      *
      * @return True if this Logger is enabled for level FINE, false otherwise.
      */
+    @Override
     public boolean isDebugEnabled() {
         return logger.isLoggable(Level.FINE);
     }
@@ -169,6 +176,7 @@ public class GWTLoggerAdapter extends MarkerIgnoringBase {
      * @param msg
      *          - the message object to be logged
      */
+    @Override
     public void debug(String msg) {
         if (logger.isLoggable(Level.FINE)) {
             log(Level.FINE, msg, null);
@@ -188,6 +196,7 @@ public class GWTLoggerAdapter extends MarkerIgnoringBase {
      * @param arg
      *          the argument
      */
+    @Override
     public void debug(String format, Object arg) {
         if (logger.isLoggable(Level.FINE)) {
             FormattingTuple ft = MessageFormatter.format(format, arg);
@@ -211,6 +220,7 @@ public class GWTLoggerAdapter extends MarkerIgnoringBase {
      * @param arg2
      *          the second argument
      */
+    @Override
     public void debug(String format, Object arg1, Object arg2) {
         if (logger.isLoggable(Level.FINE)) {
             FormattingTuple ft = MessageFormatter.format(format, arg1, arg2);
@@ -232,6 +242,7 @@ public class GWTLoggerAdapter extends MarkerIgnoringBase {
      * @param argArray
      *          an array of arguments
      */
+    @Override
     public void debug(String format, Object... argArray) {
         if (logger.isLoggable(Level.FINE)) {
             FormattingTuple ft = MessageFormatter.arrayFormat(format, argArray);
@@ -247,6 +258,7 @@ public class GWTLoggerAdapter extends MarkerIgnoringBase {
      * @param t
      *          the exception (throwable) to log
      */
+    @Override
     public void debug(String msg, Throwable t) {
         if (logger.isLoggable(Level.FINE)) {
             log(Level.FINE, msg, t);
@@ -258,6 +270,7 @@ public class GWTLoggerAdapter extends MarkerIgnoringBase {
      *
      * @return True if this Logger is enabled for the INFO level, false otherwise.
      */
+    @Override
     public boolean isInfoEnabled() {
         return logger.isLoggable(Level.INFO);
     }
@@ -268,6 +281,7 @@ public class GWTLoggerAdapter extends MarkerIgnoringBase {
      * @param msg
      *          - the message object to be logged
      */
+    @Override
     public void info(String msg) {
         if (logger.isLoggable(Level.INFO)) {
             log(Level.INFO, msg, null);
@@ -287,6 +301,7 @@ public class GWTLoggerAdapter extends MarkerIgnoringBase {
      * @param arg
      *          the argument
      */
+    @Override
     public void info(String format, Object arg) {
         if (logger.isLoggable(Level.INFO)) {
             FormattingTuple ft = MessageFormatter.format(format, arg);
@@ -310,6 +325,7 @@ public class GWTLoggerAdapter extends MarkerIgnoringBase {
      * @param arg2
      *          the second argument
      */
+    @Override
     public void info(String format, Object arg1, Object arg2) {
         if (logger.isLoggable(Level.INFO)) {
             FormattingTuple ft = MessageFormatter.format(format, arg1, arg2);
@@ -331,6 +347,7 @@ public class GWTLoggerAdapter extends MarkerIgnoringBase {
      * @param argArray
      *          an array of arguments
      */
+    @Override
     public void info(String format, Object... argArray) {
         if (logger.isLoggable(Level.INFO)) {
             FormattingTuple ft = MessageFormatter.arrayFormat(format, argArray);
@@ -347,6 +364,7 @@ public class GWTLoggerAdapter extends MarkerIgnoringBase {
      * @param t
      *          the exception (throwable) to log
      */
+    @Override
     public void info(String msg, Throwable t) {
         if (logger.isLoggable(Level.INFO)) {
             log(Level.INFO, msg, t);
@@ -359,6 +377,7 @@ public class GWTLoggerAdapter extends MarkerIgnoringBase {
      * @return True if this Logger is enabled for the WARNING level, false
      *         otherwise.
      */
+    @Override
     public boolean isWarnEnabled() {
         return logger.isLoggable(Level.WARNING);
     }
@@ -369,6 +388,7 @@ public class GWTLoggerAdapter extends MarkerIgnoringBase {
      * @param msg
      *          - the message object to be logged
      */
+    @Override
     public void warn(String msg) {
         if (logger.isLoggable(Level.WARNING)) {
             log(Level.WARNING, msg, null);
@@ -389,6 +409,7 @@ public class GWTLoggerAdapter extends MarkerIgnoringBase {
      * @param arg
      *          the argument
      */
+    @Override
     public void warn(String format, Object arg) {
         if (logger.isLoggable(Level.WARNING)) {
             FormattingTuple ft = MessageFormatter.format(format, arg);
@@ -412,6 +433,7 @@ public class GWTLoggerAdapter extends MarkerIgnoringBase {
      * @param arg2
      *          the second argument
      */
+    @Override
     public void warn(String format, Object arg1, Object arg2) {
         if (logger.isLoggable(Level.WARNING)) {
             FormattingTuple ft = MessageFormatter.format(format, arg1, arg2);
@@ -433,6 +455,7 @@ public class GWTLoggerAdapter extends MarkerIgnoringBase {
      * @param argArray
      *          an array of arguments
      */
+    @Override
     public void warn(String format, Object... argArray) {
         if (logger.isLoggable(Level.WARNING)) {
             FormattingTuple ft = MessageFormatter.arrayFormat(format, argArray);
@@ -449,6 +472,7 @@ public class GWTLoggerAdapter extends MarkerIgnoringBase {
      * @param t
      *          the exception (throwable) to log
      */
+    @Override
     public void warn(String msg, Throwable t) {
         if (logger.isLoggable(Level.WARNING)) {
             log(Level.WARNING, msg, t);
@@ -460,6 +484,7 @@ public class GWTLoggerAdapter extends MarkerIgnoringBase {
      *
      * @return True if this Logger is enabled for level SEVERE, false otherwise.
      */
+    @Override
     public boolean isErrorEnabled() {
         return logger.isLoggable(Level.SEVERE);
     }
@@ -470,6 +495,7 @@ public class GWTLoggerAdapter extends MarkerIgnoringBase {
      * @param msg
      *          - the message object to be logged
      */
+    @Override
     public void error(String msg) {
         if (logger.isLoggable(Level.SEVERE)) {
             log(Level.SEVERE, msg, null);
@@ -490,6 +516,7 @@ public class GWTLoggerAdapter extends MarkerIgnoringBase {
      * @param arg
      *          the argument
      */
+    @Override
     public void error(String format, Object arg) {
         if (logger.isLoggable(Level.SEVERE)) {
             FormattingTuple ft = MessageFormatter.format(format, arg);
@@ -513,6 +540,7 @@ public class GWTLoggerAdapter extends MarkerIgnoringBase {
      * @param arg2
      *          the second argument
      */
+    @Override
     public void error(String format, Object arg1, Object arg2) {
         if (logger.isLoggable(Level.SEVERE)) {
             FormattingTuple ft = MessageFormatter.format(format, arg1, arg2);
@@ -534,6 +562,7 @@ public class GWTLoggerAdapter extends MarkerIgnoringBase {
      * @param arguments
      *          an array of arguments
      */
+    @Override
     public void error(String format, Object... arguments) {
         if (logger.isLoggable(Level.SEVERE)) {
             FormattingTuple ft = MessageFormatter.arrayFormat(format, arguments);
@@ -550,6 +579,7 @@ public class GWTLoggerAdapter extends MarkerIgnoringBase {
      * @param t
      *          the exception (throwable) to log
      */
+    @Override
     public void error(String msg, Throwable t) {
         if (logger.isLoggable(Level.SEVERE)) {
             log(Level.SEVERE, msg, t);

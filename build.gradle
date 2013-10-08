@@ -1,10 +1,18 @@
 apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'signing'
+
 apply plugin: 'idea'
 apply plugin: 'eclipse'
-apply plugin: 'maven'
 
-version = '1.0-SNAPSHOT'
-group = 'ru.finam.gwt'
+group = 'ru.finam'
+version = '1.0'
+
+def sonatypeProperties = new Properties()
+sonatypeProperties.load(new FileInputStream("sonatype.properties"))
+for (String key : sonatypeProperties.stringPropertyNames()) {
+    project.ext.set(key, sonatypeProperties.getProperty(key))
+}
 
 jar {
     manifest {
@@ -22,16 +30,15 @@ jar {
 }
 
 idea {
-    module {
+    project {
         languageLevel = '1.6'
     }
 }
 
-repositories {
-    mavenCentral()
-}
-
-[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+compileJava.options.encoding = 'utf-8'
+compileTestJava.options.encoding = 'utf-8'
+sourceCompatibility = 1.6
+targetCompatibility = 1.6
 
 sourceSets {
     main {
@@ -48,25 +55,77 @@ sourceSets {
 
 dependencies {
     compile "com.google.gwt:gwt-user:2.5.1"
-    compile 'org.slf4j:slf4j-api:1.7.4'
+    compile 'org.slf4j:slf4j-api:1.7.5'
 }
 
 task wrapper(type: Wrapper) {
     gradleVersion = '1.8'
 }
 
-task srcs(type: Jar, dependsOn: classes) {
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+task sourcesJar(type: Jar) {
+    from sourceSets.main.allSource
     classifier = 'sources'
-    from project.sourceSets.main.allSource
+}
+
+artifacts {
+    archives jar
+    archives javadocJar
+    archives sourcesJar
+}
+
+signing {
+    sign configurations.archives
 }
 
 uploadArchives {
-    artifacts {
-        archives srcs
-    }
     repositories {
         mavenDeployer {
-            repository(url:"http://msk-projects2:81/artifactory/libs-snapshot-local")
+            beforeDeployment { deployment -> signing.signPom(deployment) }
+
+            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+                authentication(userName: sonatypeUsername, password: sonatypePassword)
+            }
+
+            pom.project {
+                name 'slf4j-gwt'
+                packaging 'jar'
+                description 'Simple slf4j api implementation for GWT'
+                url 'https://github.com/FinamTrade/slf4j-gwt'
+                inceptionYear '2013'
+
+                scm {
+                    url 'https://github.com/FinamTrade/slf4j-gwt'
+                    connection 'scm:git:https://github.com/FinamTrade/slf4j-gwt.git'
+                    developerConnection 'scm:git:git@github.com:FinamTrade/slf4j-gwt.git'
+                }
+
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                        distribution 'repo'
+                    }
+                }
+
+                issueManagement {
+                    url 'https://github.com/FinamTrade/slf4j-gwt/issues'
+                    system 'GitHub Issues'
+                }
+
+                developers {
+                    developer {
+                        id 'korzhevskiy'
+                        name 'Andrei Korzhevskii'
+                        email 'a.korzhevskiy@gmail.com'
+                        url 'https://github.com/nordligulv'
+                    }
+                }
+            }
         }
     }
 }
