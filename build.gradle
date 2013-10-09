@@ -9,7 +9,7 @@ group = 'ru.finam'
 version = '1.0'
 
 def sonatypeProperties = new Properties()
-sonatypeProperties.load(new FileInputStream('sonatype.properties'))
+sonatypeProperties.load(new FileInputStream('~/.sonatype.properties'))
 for (String key : sonatypeProperties.stringPropertyNames()) {
     project.ext.set(key, sonatypeProperties.getProperty(key))
 }
