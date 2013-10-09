@@ -41,8 +41,8 @@ repositories {
 
 compileJava.options.encoding = 'utf-8'
 compileTestJava.options.encoding = 'utf-8'
-sourceCompatibility = 1.6
-targetCompatibility = 1.6
+sourceCompatibility = '1.6'
+targetCompatibility = '1.6'
 
 sourceSets {
     main {
