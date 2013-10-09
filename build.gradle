@@ -9,7 +9,7 @@ group = 'ru.finam'
 version = '1.0'
 
 def sonatypeProperties = new Properties()
-sonatypeProperties.load(new FileInputStream("sonatype.properties"))
+sonatypeProperties.load(new FileInputStream('sonatype.properties'))
 for (String key : sonatypeProperties.stringPropertyNames()) {
     project.ext.set(key, sonatypeProperties.getProperty(key))
 }
@@ -20,7 +20,7 @@ jar {
                 'Implementation-Title': project.name,
                 'Implementation-Version': project.version,
                 'Implementation-URL': 'https://github.com/FinamTrade/slf4j-gwt',
-                'Build-Date': new java.text.SimpleDateFormat("HH:mm:ss yyyy/MM/dd").format(new Date()),
+                'Build-Date': new java.text.SimpleDateFormat('HH:mm:ss yyyy/MM/dd').format(new Date()),
         )
     }
     
@@ -58,7 +58,7 @@ sourceSets {
 }
 
 dependencies {
-    compile "com.google.gwt:gwt-user:2.5.1"
+    compile 'com.google.gwt:gwt-user:2.5.1'
     compile 'org.slf4j:slf4j-api:1.7.5'
 }
 
@@ -91,7 +91,7 @@ uploadArchives {
         mavenDeployer {
             beforeDeployment { deployment -> signing.signPom(deployment) }
 
-            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+            repository(url: 'https://oss.sonatype.org/service/local/staging/deploy/maven2/') {
                 authentication(userName: sonatypeUsername, password: sonatypePassword)
             }
 
