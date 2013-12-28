@@ -22,9 +22,4 @@ public final class GWTLoggerFactory extends NOPLoggerFactory {
         }
         return logger;
     }
-
-    @Override
-    public Logger getLogger(Class clazz) {
-        return getLogger(clazz.getName());
-    }
 }

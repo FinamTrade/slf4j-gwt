@@ -43,7 +43,10 @@ import ru.finam.slf4jgwt.impl.Impl;
  * @author Ceki G&uuml;lc&uuml;
  * @author Robert Elliot
  */
-public final class LoggerFactory {
+public class LoggerFactory {
+    private LoggerFactory() {
+    }
+
     /**
      * Return a logger named according to the name parameter using the statically
      * bound {@link ILoggerFactory} instance.
@@ -63,6 +66,6 @@ public final class LoggerFactory {
      * @return logger
      */
     public static Logger getLogger(Class clazz) {
-        return Impl.LOGGER_FACTORY.getLogger(clazz);
+        return getLogger(clazz.getName());
     }
 }
