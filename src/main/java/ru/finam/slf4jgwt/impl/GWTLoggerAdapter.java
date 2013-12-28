@@ -529,7 +529,7 @@ public class GWTLoggerAdapter extends MarkerIgnoringBase {
 
     private void formatAndLog(Level level, String format, Object... argArray) {
         if (logger.isLoggable(level)) {
-            FormattingTuple ft = MessageFormatter.format(format, argArray);
+            FormattingTuple ft = MessageFormatter.arrayFormat(format, argArray);
             logger.log(level, ft.getMessage(), ft.getThrowable());
         }
     }
