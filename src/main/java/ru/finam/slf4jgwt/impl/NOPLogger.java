@@ -8,8 +8,6 @@ import org.slf4j.Marker;
  * Date: 13.07.13
  */
 public class NOPLogger implements Logger {
-    public static final NOPLogger NOP_LOGGER = new NOPLogger();
-
     @Override
     public String getName() {
         return "NOP";

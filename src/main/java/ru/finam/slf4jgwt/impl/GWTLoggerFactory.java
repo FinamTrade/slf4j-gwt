@@ -1,11 +1,12 @@
 package ru.finam.slf4jgwt.impl;
 
+import org.slf4j.ILoggerFactory;
 import org.slf4j.Logger;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public final class GWTLoggerFactory extends NOPLoggerFactory {
+public class GWTLoggerFactory implements ILoggerFactory {
     private final Map<String, Logger> loggers = new HashMap<String, Logger>();
 
     @Override

@@ -14,8 +14,13 @@
 
     <source path="impl" />
 
+    <replace-with class="ru.finam.slf4jgwt.impl.NOPLoggerFactory">
+        <when-type-is class="org.slf4j.ILoggerFactory" />
+        <when-property-is name="gwt.logging.enabled" value="FALSE" />
+    </replace-with>
+
     <replace-with class="ru.finam.slf4jgwt.impl.GWTLoggerFactory">
-        <when-type-is class="ru.finam.slf4jgwt.impl.NOPLoggerFactory" />
+        <when-type-is class="org.slf4j.ILoggerFactory" />
         <when-property-is name="gwt.logging.enabled" value="TRUE" />
     </replace-with>
 </module>
