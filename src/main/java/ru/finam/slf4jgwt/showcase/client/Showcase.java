@@ -13,5 +13,10 @@ public class Showcase implements EntryPoint {
     logger.info("hello world!");
     logger.warn("hello world!");
     logger.error("hello world!");
+    try {
+      throw new RuntimeException("test exception");
+    } catch (Exception e) {
+      logger.error("oops", e);
+    }
   }
 }
