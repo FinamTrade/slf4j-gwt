@@ -16,6 +16,10 @@ public class Console {
   private Console() {
   }
 
+  public static native boolean isEnabled() /*-{
+    return !!(window.console && window.console.log);
+  }-*/;
+
   public static native void error(String message) /*-{
       window.console.error(message);
   }-*/;

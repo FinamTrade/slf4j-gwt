@@ -187,6 +187,10 @@ public class ConsoleLoggerAdapter extends MarkerIgnoringBase {
   
   private static void log(String loggerName, Level level, String message,
                           Throwable throwable) {
+    if (!Console.isEnabled()) {
+      return;
+    }
+
     String formattedMessage = format(loggerName, level, message, throwable);
 
     if (level == Level.ERROR) {
