@@ -2,9 +2,7 @@ package ru.finam.slf4jgwt.logging.console;
 
 import org.slf4j.ILoggerFactory;
 import org.slf4j.Logger;
-
-import java.util.HashMap;
-import java.util.Map;
+import ru.finam.slf4jgwt.impl.FastStringMap;
 
 /**
  * ConsoleLoggerAdapter is an implementation of {@link org.slf4j.ILoggerFactory}
@@ -13,7 +11,7 @@ import java.util.Map;
  * @author Andrei Korzhevskii <a.korzhevskiy@gmail.com>
  */
 public class ConsoleLoggerFactory implements ILoggerFactory {
-  private final Map<String, Logger> loggers = new HashMap<String, Logger>();
+  private final FastStringMap<Logger> loggers = FastStringMap.create();
 
   @Override
   public Logger getLogger(String name) {
