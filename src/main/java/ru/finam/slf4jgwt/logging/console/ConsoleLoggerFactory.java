@@ -7,6 +7,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * ConsoleLoggerAdapter is an implementation of {@link org.slf4j.ILoggerFactory}
+ * returning the appropriately named {@link ConsoleLoggerAdapter} instance.
+ *
  * @author Andrei Korzhevskii <a.korzhevskiy@gmail.com>
  */
 public class ConsoleLoggerFactory implements ILoggerFactory {

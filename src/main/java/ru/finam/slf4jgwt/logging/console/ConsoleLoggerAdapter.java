@@ -8,6 +8,8 @@ import org.slf4j.helpers.MessageFormatter;
 import java.util.Date;
 
 /**
+ * A LoggerAdapter that prints logs to the window.console.
+ *
  * @author Andrei Korzhevskii <a.korzhevskiy@gmail.com>
  */
 public class ConsoleLoggerAdapter extends MarkerIgnoringBase {
