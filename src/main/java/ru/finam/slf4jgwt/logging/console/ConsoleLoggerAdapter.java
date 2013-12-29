@@ -1,11 +1,10 @@
 package ru.finam.slf4jgwt.logging.console;
 
+import com.google.gwt.core.client.JsDate;
 import com.google.gwt.core.shared.GWT;
 import org.slf4j.helpers.FormattingTuple;
 import org.slf4j.helpers.MarkerIgnoringBase;
 import org.slf4j.helpers.MessageFormatter;
-
-import java.util.Date;
 
 /**
  * A LoggerAdapter that prints logs to the window.console.
@@ -204,7 +203,7 @@ public class ConsoleLoggerAdapter extends MarkerIgnoringBase {
   private static String format(String loggerName, Level level, String message,
                                Throwable throwable) {
     StringBuilder builder = new StringBuilder();
-    builder.append(new Date().toString());
+    builder.append(JsDate.create().toString());
     builder.append(" [");
     builder.append(level.getName());
     builder.append("] ");
