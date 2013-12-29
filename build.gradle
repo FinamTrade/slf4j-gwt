@@ -10,7 +10,9 @@ version = '1.0'
 
 def sonatypeProperties = new Properties()
 sonatypeProperties.load(new FileInputStream("${System.properties['user.home']}/.sonatype.properties"))
-for (String key : sonatypeProperties.stringPropertyNames()) {
+['signing.keyId', 'signing.password', 'signing.secretKeyRingFile',
+        'sonatypeUsername', 'sonatypePassword'].each { key ->
+
     project.ext.set(key, sonatypeProperties.getProperty(key))
 }
 
