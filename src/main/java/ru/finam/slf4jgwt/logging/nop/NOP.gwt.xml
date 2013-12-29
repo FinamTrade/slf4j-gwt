@@ -1,9 +1,9 @@
 <module>
     <inherits name="ru.finam.slf4jgwt.API"/>
 
-    <source path="impl" />
+    <source path="" />
 
-    <replace-with class="ru.finam.slf4jgwt.impl.NOPLoggerFactory">
+    <replace-with class="ru.finam.slf4jgwt.logging.nop.NOPLoggerFactory">
         <when-type-is class="org.slf4j.ILoggerFactory" />
     </replace-with>
 </module>

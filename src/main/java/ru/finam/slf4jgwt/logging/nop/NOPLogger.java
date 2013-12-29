@@ -1,4 +1,4 @@
-package ru.finam.slf4jgwt.impl;
+package ru.finam.slf4jgwt.logging.nop;
 
 import org.slf4j.Logger;
 import org.slf4j.Marker;
