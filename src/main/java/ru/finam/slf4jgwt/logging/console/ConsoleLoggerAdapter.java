@@ -171,23 +171,24 @@ public class ConsoleLoggerAdapter extends MarkerIgnoringBase {
 
   private void log(Level level, String msg, Throwable t) {
     if (isLoggable(level)) {
-      _log(level, msg, t);
+      log(name, level, msg, t);
     }
   }
 
   private void formatAndLog(Level level, String format, Object... argArray) {
     if (isLoggable(level)) {
       FormattingTuple ft = MessageFormatter.arrayFormat(format, argArray);
-      _log(level, ft.getMessage(), ft.getThrowable());
+      log(name, level, ft.getMessage(), ft.getThrowable());
     }
   }
   
-  private boolean isLoggable(Level level) {
+  private static boolean isLoggable(Level level) {
     return level.intValue() >= LEVEL.intValue();
   }
   
-  private void _log(Level level, String message, Throwable throwable) {
-    String formattedMessage = format(name, level, message, throwable);
+  private static void log(String loggerName, Level level, String message,
+                          Throwable throwable) {
+    String formattedMessage = format(loggerName, level, message, throwable);
 
     if (level == Level.ERROR) {
       Console.error(formattedMessage);
@@ -195,10 +196,8 @@ public class ConsoleLoggerAdapter extends MarkerIgnoringBase {
       Console.warn(formattedMessage);
     } else if (level == Level.INFO) {
       Console.info(formattedMessage);
-    } else if (level == Level.DEBUG) {
-      Console.debug(formattedMessage);
-    } else if (level == Level.TRACE) {
-      Console.trace(formattedMessage);
+    } else {
+      Console.log(formattedMessage);
     }
   }
 
