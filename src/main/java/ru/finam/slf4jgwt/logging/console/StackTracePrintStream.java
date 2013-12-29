@@ -15,63 +15,46 @@
  */
 package ru.finam.slf4jgwt.logging.console;
 
-import java.io.FilterOutputStream;
+import java.io.OutputStream;
 import java.io.PrintStream;
 
 /**
  * A {@link java.io.PrintStream} implementation that implements only a subset of methods that is enough to
  * be used with {@link Throwable#printStackTrace(java.io.PrintStream)}.
- * <p>
- * Note that all implemented methods marked as final except two methods that are safe to be
- * overridden by the subclasses: {@link #append(String)} {@link #newLine()}.
  */
-public class StackTracePrintStream extends PrintStream {
+class StackTracePrintStream extends PrintStream {
 
   private final StringBuilder builder;
 
   public StackTracePrintStream(StringBuilder builder) {
-    super(new FilterOutputStream(null));
+    super((OutputStream) null);
     this.builder = builder;
-  }
-
-  /**
-   * Appends some text to the output.
-   */
-  protected void append(String text) {
-    builder.append(text);
-  }
-
-  /**
-   * Appends a newline to the output.
-   */
-  protected void newLine() {
-    builder.append("\n");
   }
 
   @Override
   public final void print(Object obj) {
-    append(String.valueOf(obj));
+    builder.append(obj);
   }
 
   @Override
   public final void println(Object obj) {
-    append(String.valueOf(obj));
-    newLine();
+    print(obj);
+    println();
   }
 
   @Override
   public final void print(String str) {
-    append(str);
+    builder.append(str);
   }
 
   @Override
   public final void println() {
-    newLine();
+    builder.append("\n");
   }
 
   @Override
   public final void println(String str) {
-    append(str);
-    newLine();
+    print(str);
+    println();
   }
 }
