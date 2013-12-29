@@ -36,13 +36,14 @@ import org.slf4j.Logger;
  * @author Ceki G&uuml;lc&uuml;
  */
 public class NOPLoggerFactory implements ILoggerFactory {
+  private final NOPLogger nopLogger = new NOPLogger();
 
   public NOPLoggerFactory() {
     // nothing to do
   }
 
   public Logger getLogger(String name) {
-    return NOPLogger.NOP_LOGGER;
+    return nopLogger;
   }
 
 }

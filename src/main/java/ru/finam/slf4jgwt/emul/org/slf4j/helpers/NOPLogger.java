@@ -37,7 +37,7 @@ public class NOPLogger extends MarkerIgnoringBase {
   /**
    * The unique instance of NOPLogger.
    */
-  public static final NOPLogger NOP_LOGGER = new NOPLogger();
+//  public static final NOPLogger NOP_LOGGER = new NOPLogger();
 
   /**
    * There is no point in creating multiple instances of NOPLOgger, 
