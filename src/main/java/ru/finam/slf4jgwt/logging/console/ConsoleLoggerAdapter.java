@@ -190,15 +190,15 @@ public class ConsoleLoggerAdapter extends MarkerIgnoringBase {
     String formattedMessage = format(name, level, message, throwable);
 
     if (level == Level.ERROR) {
-      _error(formattedMessage);
+      Console.error(formattedMessage);
     } else if (level == Level.WARN) {
-      _warn(formattedMessage);
+      Console.warn(formattedMessage);
     } else if (level == Level.INFO) {
-      _info(formattedMessage);
+      Console.info(formattedMessage);
     } else if (level == Level.DEBUG) {
-      _debug(formattedMessage);
+      Console.debug(formattedMessage);
     } else if (level == Level.TRACE) {
-      _trace(formattedMessage);
+      Console.trace(formattedMessage);
     }
   }
 
@@ -217,28 +217,4 @@ public class ConsoleLoggerAdapter extends MarkerIgnoringBase {
     }
     return builder.toString();
   }
-
-  private static native void _debug(String message) /*-{
-      window.console.debug(message);
-  }-*/;
-
-  private static native void _trace(String message) /*-{
-      window.console.trace(message);
-  }-*/;
-
-  private static native void _error(String message) /*-{
-      window.console.error(message);
-  }-*/;
-
-  private static native void _warn(String message) /*-{
-      window.console.warn(message);
-  }-*/;
-
-  private static native void _info(String message) /*-{
-      window.console.info(message);
-  }-*/;
-
-  private static native void _log(String message) /*-{
-      window.console.log(message);
-  }-*/;
 }
