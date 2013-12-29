@@ -5,7 +5,7 @@
     <source path="" />
 
     <define-property name="slf4j.consoleLogger.enabled" values="TRUE, FALSE" />
-    <replace-with class="ru.finam.slf4jgwt.logging.nop.NOPLoggerFactory">
+    <replace-with class="org.slf4j.helpers.NOPLoggerFactory">
         <when-type-is class="org.slf4j.ILoggerFactory" />
         <when-property-is name="slf4j.consoleLogger.enabled" value="FALSE" />
     </replace-with>
