@@ -19,6 +19,7 @@ public class Showcase implements EntryPoint {
     } catch (Exception e) {
       logger.error("oops", e);
     }
+    throw new RuntimeException("uncaught exception");
   }
 
   private void methodThrowingException() throws Exception {

@@ -1,7 +1,7 @@
 package ru.finam.slf4jgwt.logging.console;
 
 import com.google.gwt.core.client.JsDate;
-import com.google.gwt.core.shared.GWT;
+import com.google.gwt.core.client.GWT;
 import org.slf4j.helpers.FormattingTuple;
 import org.slf4j.helpers.MarkerIgnoringBase;
 import org.slf4j.helpers.MessageFormatter;
@@ -212,8 +212,22 @@ public class ConsoleLoggerAdapter extends MarkerIgnoringBase {
     builder.append(message);
     if (throwable != null) {
       builder.append("\n");
-      throwable.printStackTrace(new StackTracePrintStream(builder));
+      //TODO use throwable.printStackTrace(new StackTracePrintStream(builder));
+      //when gwt 2.6 is out
+      printStackTrace(builder, throwable);
     }
     return builder.toString();
+  }
+
+  private static void printStackTrace(StringBuilder builder, Throwable throwable) {
+    for (Throwable t = throwable; t != null; t = t.getCause()) {
+      if (t != throwable) {
+        builder.append("Caused by: ");
+      }
+      builder.append(t).append("\n");
+      for (StackTraceElement element : t.getStackTrace()) {
+        builder.append("\tat ").append(element).append("\n");
+      }
+    }
   }
 }

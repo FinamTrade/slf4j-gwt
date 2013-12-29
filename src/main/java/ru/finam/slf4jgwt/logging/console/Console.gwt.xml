@@ -1,8 +1,11 @@
 <module>
+    <inherits name="com.google.gwt.core.Core"/>
     <inherits name="ru.finam.slf4jgwt.API"/>
     <inherits name="ru.finam.slf4jgwt.logging.nop.NOP"/>
 
     <source path="" />
+
+    <entry-point class="ru.finam.slf4jgwt.logging.console.UncaughtExceptionHandler"/>
 
     <define-property name="slf4j.consoleLogger.enabled" values="TRUE, FALSE" />
     <replace-with class="org.slf4j.helpers.NOPLoggerFactory">
