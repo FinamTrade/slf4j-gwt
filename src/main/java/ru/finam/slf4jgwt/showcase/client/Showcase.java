@@ -5,18 +5,23 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class Showcase implements EntryPoint {
+  private final Logger logger = LoggerFactory.getLogger(Showcase.class);
+
   @Override
   public void onModuleLoad() {
-    Logger logger = LoggerFactory.getLogger(getClass());
     logger.trace("hello world!");
     logger.debug("hello world!");
     logger.info("hello world!");
     logger.warn("hello world!");
     logger.error("hello world!");
     try {
-      throw new RuntimeException("test exception");
+      methodThrowingException();
     } catch (Exception e) {
       logger.error("oops", e);
     }
+  }
+
+  private void methodThrowingException() throws Exception {
+    throw new Exception("test exception");
   }
 }

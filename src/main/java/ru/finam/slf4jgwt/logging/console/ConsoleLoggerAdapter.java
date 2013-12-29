@@ -203,14 +203,15 @@ public class ConsoleLoggerAdapter extends MarkerIgnoringBase {
   private static String format(String loggerName, Level level, String message,
                                Throwable throwable) {
     StringBuilder builder = new StringBuilder();
-    builder.append(JsDate.create().toString());
-    builder.append(" [");
+    builder.append(JsDate.create().toTimeString());
+    builder.append(" ");
+    builder.append(loggerName);
+    builder.append("\n [");
     builder.append(level.getName());
     builder.append("] ");
-    builder.append(loggerName);
-    builder.append(" - ");
     builder.append(message);
     if (throwable != null) {
+      builder.append("\n");
       throwable.printStackTrace(new StackTracePrintStream(builder));
     }
     return builder.toString();

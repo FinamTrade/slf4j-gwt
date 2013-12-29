@@ -33,13 +33,12 @@ class StackTracePrintStream extends PrintStream {
 
   @Override
   public final void print(Object obj) {
-    builder.append(obj);
+    print(String.valueOf(obj));
   }
 
   @Override
   public final void println(Object obj) {
-    print(obj);
-    println();
+    println(String.valueOf(obj));
   }
 
   @Override
