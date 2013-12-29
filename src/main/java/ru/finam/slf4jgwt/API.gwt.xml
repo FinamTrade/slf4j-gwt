@@ -1,5 +1,4 @@
 <module>
     <super-source path="emul"/>
     <source path="impl"/>
-    <source path="logging"/>
 </module>

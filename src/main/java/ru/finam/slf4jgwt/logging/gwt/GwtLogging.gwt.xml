@@ -13,7 +13,7 @@
     <set-property name="gwt.logging.systemHandler" value="DISABLED" />
     <set-property name="gwt.logging.simpleRemoteHandler" value="DISABLED" />
 
-    <source path="impl" />
+    <source path="" />
 
     <replace-with class="ru.finam.slf4jgwt.logging.nop.NOPLoggerFactory">
         <when-type-is class="org.slf4j.ILoggerFactory" />
