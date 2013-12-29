@@ -1,0 +1,42 @@
+<module>
+    <inherits name="ru.finam.slf4jgwt.API"/>
+    <inherits name="ru.finam.slf4jgwt.logging.nop.NOP"/>
+
+    <source path="" />
+
+    <define-property name="slf4j.consoleLogger.enabled" values="TRUE, FALSE" />
+    <replace-with class="ru.finam.slf4jgwt.logging.nop.NOPLoggerFactory">
+        <when-type-is class="org.slf4j.ILoggerFactory" />
+        <when-property-is name="slf4j.consoleLogger.enabled" value="FALSE" />
+    </replace-with>
+    <replace-with class="ru.finam.slf4jgwt.logging.console.ConsoleLoggerFactory">
+        <when-type-is class="org.slf4j.ILoggerFactory" />
+        <when-property-is name="slf4j.consoleLogger.enabled" value="TRUE" />
+    </replace-with>
+
+    <define-property name="slf4j.consoleLogger.logLevel" values="TRACE, DEBUG, INFO, WARN, ERROR" />
+    <replace-with class="ru.finam.slf4jgwt.logging.console.Level.LevelTrace">
+        <when-type-is class="ru.finam.slf4jgwt.logging.console.Level" />
+        <when-property-is name="slf4j.consoleLogger.logLevel" value="TRACE" />
+    </replace-with>
+    <replace-with class="ru.finam.slf4jgwt.logging.console.Level.LevelDebug">
+        <when-type-is class="ru.finam.slf4jgwt.logging.console.Level" />
+        <when-property-is name="slf4j.consoleLogger.logLevel" value="DEBUG" />
+    </replace-with>
+    <replace-with class="ru.finam.slf4jgwt.logging.console.Level.LevelInfo">
+        <when-type-is class="ru.finam.slf4jgwt.logging.console.Level" />
+        <when-property-is name="slf4j.consoleLogger.logLevel" value="INFO" />
+    </replace-with>
+    <replace-with class="ru.finam.slf4jgwt.logging.console.Level.LevelWarn">
+        <when-type-is class="ru.finam.slf4jgwt.logging.console.Level" />
+        <when-property-is name="slf4j.consoleLogger.logLevel" value="WARN" />
+    </replace-with>
+    <replace-with class="ru.finam.slf4jgwt.logging.console.Level.LevelError">
+        <when-type-is class="ru.finam.slf4jgwt.logging.console.Level" />
+        <when-property-is name="slf4j.consoleLogger.logLevel" value="ERROR" />
+    </replace-with>
+
+    <set-property name="slf4j.consoleLogger.enabled" value="TRUE"/>
+    <set-property name="slf4j.consoleLogger.logLevel" value="INFO"/>
+
+</module>
