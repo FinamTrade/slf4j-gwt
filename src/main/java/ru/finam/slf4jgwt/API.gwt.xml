@@ -1,4 +1,6 @@
 <module>
+    <inherits name="com.google.gwt.core.Core"/>
+
     <super-source path="emul"/>
     <source path="impl"/>
 </module>
