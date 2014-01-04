@@ -44,13 +44,7 @@ public class NOPLogger extends MarkerIgnoringBase {
    * except by derived classes, hence the protected  access for the constructor.
    */
   protected NOPLogger() {
-  }
-
-  /**
-   * Always returns the string value "NOP".
-   */
-  public String getName() {
-    return "NOP";
+    this.name = "NOP";
   }
 
   /**
