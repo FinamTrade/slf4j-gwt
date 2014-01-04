@@ -16,7 +16,7 @@ public class Console {
   private Console() {
   }
 
-  public static native boolean isEnabled() /*-{
+  public static native boolean isSupported() /*-{
     return !!(window.console && window.console.log);
   }-*/;
 

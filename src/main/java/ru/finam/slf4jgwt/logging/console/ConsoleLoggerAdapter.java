@@ -169,20 +169,20 @@ public class ConsoleLoggerAdapter extends MarkerIgnoringBase {
   }
 
   private void log(Level level, String msg, Throwable t) {
-    if (isLoggable(level)) {
+    if (isLoggable(level) && Console.isSupported()) {
       log(name, level, msg, t);
     }
   }
 
   private void formatAndLog(Level level, String format, Object... argArray) {
-    if (isLoggable(level)) {
+    if (isLoggable(level) && Console.isSupported()) {
       FormattingTuple ft = MessageFormatter.arrayFormat(format, argArray);
       log(name, level, ft.getMessage(), ft.getThrowable());
     }
   }
   
   private static boolean isLoggable(Level level) {
-    return Console.isEnabled() && level.intValue() >= LEVEL.intValue();
+    return level.intValue() >= LEVEL.intValue();
   }
   
   private static void log(String loggerName, Level level, String message,
