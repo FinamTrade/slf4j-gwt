@@ -1,6 +1,5 @@
 <module>
     <inherits name="ru.finam.slf4jgwt.API"/>
-    <inherits name="ru.finam.slf4jgwt.logging.nop.NOP"/>
     <inherits name="com.google.gwt.logging.Logging"/>
 
     <!-- Use default values of gwt logging -->
