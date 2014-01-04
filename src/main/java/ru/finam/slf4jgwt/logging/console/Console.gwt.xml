@@ -1,7 +1,6 @@
 <module>
     <inherits name="com.google.gwt.core.Core"/>
     <inherits name="ru.finam.slf4jgwt.API"/>
-    <inherits name="ru.finam.slf4jgwt.logging.nop.NOP"/>
 
     <source path="" />
 
