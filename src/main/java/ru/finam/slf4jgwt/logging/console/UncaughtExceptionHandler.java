@@ -8,7 +8,9 @@ import org.slf4j.LoggerFactory;
 public class UncaughtExceptionHandler implements EntryPoint {
   @Override
   public void onModuleLoad() {
-    if (GWT.getUncaughtExceptionHandler() == null) {
+    if (Configuration.isLoggingEnabled() &&
+        GWT.getUncaughtExceptionHandler() == null) {
+
       final Logger logger = LoggerFactory.getLogger("");
       GWT.setUncaughtExceptionHandler(new GWT.UncaughtExceptionHandler() {
         @Override

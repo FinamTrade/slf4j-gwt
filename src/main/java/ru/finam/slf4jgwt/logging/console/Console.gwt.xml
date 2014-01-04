@@ -15,6 +15,15 @@
         <when-property-is name="slf4j.consoleLogger.enabled" value="TRUE" />
     </replace-with>
 
+    <replace-with class="ru.finam.slf4jgwt.logging.console.Configuration.LoggingConfigurationDisabled">
+        <when-type-is class="ru.finam.slf4jgwt.logging.console.Configuration.LoggingConfiguration" />
+        <when-property-is name="slf4j.consoleLogger.enabled" value="FALSE" />
+    </replace-with>
+    <replace-with class="ru.finam.slf4jgwt.logging.console.Configuration.LoggingConfigurationEnabled">
+        <when-type-is class="ru.finam.slf4jgwt.logging.console.Configuration.LoggingConfiguration" />
+        <when-property-is name="slf4j.consoleLogger.enabled" value="TRUE" />
+    </replace-with>
+
     <define-property name="slf4j.consoleLogger.logLevel" values="TRACE, DEBUG, INFO, WARN, ERROR" />
     <replace-with class="ru.finam.slf4jgwt.logging.console.Level.LevelTrace">
         <when-type-is class="ru.finam.slf4jgwt.logging.console.Level" />

@@ -1,7 +1,6 @@
 package ru.finam.slf4jgwt.logging.console;
 
 import com.google.gwt.core.client.JsDate;
-import com.google.gwt.core.client.GWT;
 import org.slf4j.helpers.FormattingTuple;
 import org.slf4j.helpers.MarkerIgnoringBase;
 import org.slf4j.helpers.MessageFormatter;
@@ -12,7 +11,6 @@ import org.slf4j.helpers.MessageFormatter;
  * @author Andrei Korzhevskii <a.korzhevskiy@gmail.com>
  */
 public class ConsoleLoggerAdapter extends MarkerIgnoringBase {
-  private static final Level LEVEL = GWT.create(Level.class);
 
   public ConsoleLoggerAdapter(String name) {
     this.name = name;
@@ -182,7 +180,7 @@ public class ConsoleLoggerAdapter extends MarkerIgnoringBase {
   }
   
   private static boolean isLoggable(Level level) {
-    return level.intValue() >= LEVEL.intValue();
+    return Configuration.isLoggingEnabled(level);
   }
   
   private static void log(String loggerName, Level level, String message,
