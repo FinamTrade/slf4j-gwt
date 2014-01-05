@@ -187,11 +187,12 @@ public class ConsoleLoggerAdapter extends MarkerIgnoringBase {
                           Throwable throwable) {
     String formattedMessage = format(loggerName, level, message, throwable);
 
-    if (level == Level.ERROR) {
+    int priority = level.getPriority();
+    if (priority == Level.ERROR.getPriority()) {
       Console.error(formattedMessage);
-    } else if (level == Level.WARN) {
+    } else if (priority == Level.WARN.getPriority()) {
       Console.warn(formattedMessage);
-    } else if (level == Level.INFO) {
+    } else if (priority == Level.INFO.getPriority()) {
       Console.info(formattedMessage);
     } else {
       Console.log(formattedMessage);

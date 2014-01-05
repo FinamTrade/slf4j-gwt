@@ -33,7 +33,7 @@ class Configuration {
 
     @Override
     public boolean isLoggingEnabled(Level level) {
-      return level.intValue() >= this.level.intValue();
+      return level.getPriority() >= this.level.getPriority();
     }
   }
 

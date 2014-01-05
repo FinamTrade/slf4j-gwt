@@ -17,7 +17,7 @@ public interface Level {
     }
 
     @Override
-    public int intValue() {
+    public int getPriority() {
       return 0;
     }
   }
@@ -29,7 +29,7 @@ public interface Level {
     }
 
     @Override
-    public int intValue() {
+    public int getPriority() {
       return 1;
     }
   }
@@ -41,7 +41,7 @@ public interface Level {
     }
 
     @Override
-    public int intValue() {
+    public int getPriority() {
       return 2;
     }
   }
@@ -53,7 +53,7 @@ public interface Level {
     }
 
     @Override
-    public int intValue() {
+    public int getPriority() {
       return 3;
     }
   }
@@ -65,12 +65,12 @@ public interface Level {
     }
 
     @Override
-    public int intValue() {
+    public int getPriority() {
       return 4;
     }
   }
 
   String getName();
 
-  int intValue();
+  int getPriority();
 }
