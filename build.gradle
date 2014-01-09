@@ -1,19 +1,20 @@
 apply plugin: 'java'
-apply plugin: 'maven'
-apply plugin: 'signing'
 
 apply plugin: 'idea'
 apply plugin: 'eclipse'
 
-group = 'ru.finam'
-version = '1.0'
+apply plugin: 'nexus'
 
-def sonatypeProperties = new Properties()
-sonatypeProperties.load(new FileInputStream("${System.properties['user.home']}/.sonatype.properties"))
-['signing.keyId', 'signing.password', 'signing.secretKeyRingFile',
-        'sonatypeUsername', 'sonatypePassword'].each { key ->
+group 'ru.finam'
 
-    project.ext.set(key, sonatypeProperties.getProperty(key))
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath 'org.gradle.api.plugins:gradle-nexus-plugin:0.6.1'
+    }
 }
 
 jar {
@@ -68,69 +69,38 @@ task wrapper(type: Wrapper) {
     gradleVersion = '1.10'
 }
 
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
+modifyPom {
+    project {
+        name 'slf4j-gwt'
+        description 'Simple slf4j api implementation for GWT'
+        url 'https://github.com/FinamTrade/slf4j-gwt'
+        inceptionYear '2013'
 
-task sourcesJar(type: Jar) {
-    from sourceSets.main.allSource
-    classifier = 'sources'
-}
+        scm {
+            url 'https://github.com/FinamTrade/slf4j-gwt'
+            connection 'scm:git:https://github.com/FinamTrade/slf4j-gwt.git'
+            developerConnection 'scm:git:git@github.com:FinamTrade/slf4j-gwt.git'
+        }
 
-artifacts {
-    archives jar
-    archives javadocJar
-    archives sourcesJar
-}
-
-signing {
-    sign configurations.archives
-}
-
-uploadArchives {
-    repositories {
-        mavenDeployer {
-            beforeDeployment { deployment -> signing.signPom(deployment) }
-
-            repository(url: 'https://oss.sonatype.org/service/local/staging/deploy/maven2/') {
-                authentication(userName: sonatypeUsername, password: sonatypePassword)
+        licenses {
+            license {
+                name 'The Apache Software License, Version 2.0'
+                url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                distribution 'repo'
             }
+        }
 
-            pom.project {
-                name 'slf4j-gwt'
-                packaging 'jar'
-                description 'Simple slf4j api implementation for GWT'
-                url 'https://github.com/FinamTrade/slf4j-gwt'
-                inceptionYear '2013'
+        issueManagement {
+            url 'https://github.com/FinamTrade/slf4j-gwt/issues'
+            system 'GitHub Issues'
+        }
 
-                scm {
-                    url 'https://github.com/FinamTrade/slf4j-gwt'
-                    connection 'scm:git:https://github.com/FinamTrade/slf4j-gwt.git'
-                    developerConnection 'scm:git:git@github.com:FinamTrade/slf4j-gwt.git'
-                }
-
-                licenses {
-                    license {
-                        name 'The Apache Software License, Version 2.0'
-                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                        distribution 'repo'
-                    }
-                }
-
-                issueManagement {
-                    url 'https://github.com/FinamTrade/slf4j-gwt/issues'
-                    system 'GitHub Issues'
-                }
-
-                developers {
-                    developer {
-                        id 'korzhevskiy'
-                        name 'Andrei Korzhevskii'
-                        email 'a.korzhevskiy@gmail.com'
-                        url 'https://github.com/nordligulv'
-                    }
-                }
+        developers {
+            developer {
+                id 'korzhevskiy'
+                name 'Andrei Korzhevskii'
+                email 'a.korzhevskiy@gmail.com'
+                url 'https://github.com/nordligulv'
             }
         }
     }
