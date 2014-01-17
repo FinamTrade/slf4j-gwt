@@ -2,7 +2,6 @@ package ru.finam.slf4jgwt.logging.gwt;
 
 import org.slf4j.ILoggerFactory;
 import org.slf4j.Logger;
-import ru.finam.slf4jgwt.impl.FastStringMap;
 
 /**
  * GWTLoggerFactory is an implementation of {@link org.slf4j.ILoggerFactory}

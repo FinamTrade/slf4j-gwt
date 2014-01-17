@@ -1,4 +1,4 @@
-package ru.finam.slf4jgwt.impl;
+package ru.finam.slf4jgwt.logging.gwt;
 
 import com.google.gwt.core.client.JavaScriptObject;
 
@@ -29,5 +29,12 @@ public final class FastStringMap<V> extends JavaScriptObject {
     // JavaScript properties.
     var safeKey = ':' + key;
     this[safeKey] = value;
+  }-*/;
+
+  public native void remove(String key) /*-{
+    // Accesses must be prefixed with ':' to prevent conflict with built-in
+    // JavaScript properties.
+    var safeKey = ':' + key;
+    delete this[safeKey];
   }-*/;
 }
