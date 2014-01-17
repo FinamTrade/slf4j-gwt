@@ -1,9 +1,9 @@
 Simple slf4j api implementation for GWT
 ===
 
-The aim of this project is to provide developers with an implementation
-of the [Simple Logging Facade for Java (SLF4J 1.7.5)](http://www.slf4j.org/) API for the GWT client side. Right now the project provides
-the basic implementation of the SLF4J API using the java.util.logging (JUL)
+The aim of this project is to provide developers with an implementation of the
+[Simple Logging Facade for Java (SLF4J 1.7.5)](http://www.slf4j.org/) API for the GWT client side.
+Right now the project provides the basic implementation of the SLF4J API using the java.util.logging (JUL)
 logging framework supported since GWT 2.1. All logging messages are printed to developer/firebug console.
 
 Usage
@@ -30,15 +30,27 @@ or ivy:
 <dependency org="ru.finam" name="slf4j-gwt" rev="1.1" />
 ```
 
-Add dependency in your gwt module descriptor (*.gwt.xml)
-and turn gwt logging on:
+Add dependency in your gwt module descriptor (*.gwt.xml):
 ```xml
-<inherits name="ru.finam.slf4jgwt.SLF4J"/>
-<set-property name="gwt.logging.enabled" value="TRUE"/>
+<inherits name="ru.finam.slf4jgwt.logging.gwt.GwtLogging"/>
 ```
 
-You can also set logging level:
+You can also set logging level (ALL, FINEST, FINER, FINE, CONFIG, INFO, WARNING, SEVERE):
 ```xml
 <set-property name="gwt.logging.logLevel" value="INFO"/>
 ```
 
+Enable or disable gwt logging:
+```xml
+<set-property name="gwt.logging.enabled" value="TRUE"/>
+```
+
+If you want to provide slf4j API (e.g., in library module):
+```xml
+<inherits name="ru.finam.slf4jgwt.API"/>
+```
+
+If you want to provide slf4j but not to log anything in your application:
+```xml
+<inherits name="ru.finam.slf4jgwt.logging.nop.NopLogging"/>
+```
