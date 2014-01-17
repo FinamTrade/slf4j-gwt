@@ -1,6 +1,6 @@
 <module rename-to="showcase">
     <inherits name="com.google.gwt.core.Core"/>
-    <inherits name="ru.finam.slf4jgwt.logging.nop.NOP"/>
+    <inherits name="ru.finam.slf4jgwt.logging.nop.NopLogging"/>
     <entry-point class="ru.finam.slf4jgwt.showcase.client.Showcase"/>
 
     <set-configuration-property name="devModeRedirectEnabled" value="true"/>
