@@ -8,26 +8,26 @@ logging framework supported since GWT 2.1. All logging messages are printed to d
 
 Usage
 ---
-slf4j-gwt is available in [maven central](http://search.maven.org/#artifactdetails%7Cru.finam%7Cslf4j-gwt%7C1.0%7Cjar)
+slf4j-gwt is available in [maven central](http://search.maven.org/#artifactdetails%7Cru.finam%7Cslf4j-gwt%7C1.1%7Cjar)
 
 Just include it in your pom.xml
 ```xml
 <dependency>
     <groupId>ru.finam</groupId>
     <artifactId>slf4j-gwt</artifactId>
-    <version>1.0</version>
+    <version>1.1</version>
 </dependency>
 ```
 or gradle build:
 ```groovy
 dependencies {
-    compile 'ru.finam:slf4j-gwt:1.0'
+    compile 'ru.finam:slf4j-gwt:1.1'
 }
 ```
 
 or ivy:
 ```xml
-<dependency org="ru.finam" name="slf4j-gwt" rev="1.0" />
+<dependency org="ru.finam" name="slf4j-gwt" rev="1.1" />
 ```
 
 Add dependency in your gwt module descriptor (*.gwt.xml)
