@@ -55,5 +55,5 @@ If you want to provide slf4j but to not log anything in your application:
 <inherits name="ru.finam.slf4jgwt.logging.nop.NOP"/>
 ```
 
-ru.finam.slf4jgwt.logging.util.Util module provides a handful Log class to
+ru.finam.slf4jgwt.logging.util.Util module provides a handful [Log](https://github.com/FinamTrade/slf4j-gwt/blob/master/src/main/java/ru/finam/slf4jgwt/logging/util/Log.java) class to
 log messages without instantiating Logger in client code.
