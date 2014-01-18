@@ -14,6 +14,10 @@ public class GWTLoggerFactory implements ILoggerFactory {
 
   @Override
   public Logger getLogger(String name) {
+    if (name == null) {
+      throw new NullPointerException();
+    }
+
     // the root logger is called "" in JUL
     if (Logger.ROOT_LOGGER_NAME.equalsIgnoreCase(name)) {
       name = "";
