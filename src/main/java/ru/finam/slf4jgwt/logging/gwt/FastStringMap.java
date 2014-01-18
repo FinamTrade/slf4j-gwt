@@ -8,7 +8,7 @@ import com.google.gwt.core.client.JavaScriptObject;
  *
  * @author Andrei Korzhevskii <a.korzhevskiy@gmail.com>
  */
-public final class FastStringMap<V> extends JavaScriptObject {
+final class FastStringMap<V> extends JavaScriptObject {
 
   public static <V> FastStringMap<V> create() {
     return JavaScriptObject.createObject().cast();
