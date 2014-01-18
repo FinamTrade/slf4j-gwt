@@ -1,5 +1,5 @@
 <module>
-    <inherits name="ru.finam.slf4jgwt.API"/>
+    <inherits name="ru.finam.slf4jgwt.api.API"/>
     <inherits name="com.google.gwt.logging.Logging"/>
 
     <set-property name="gwt.logging.enabled" value="TRUE"/>
