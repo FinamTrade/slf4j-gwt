@@ -27,7 +27,7 @@ public class Log {
   }
 
   /**
-   * Send a formatted DEBUG log message and log the exception.
+   * Send a formatted DEBUG log message.
    */
   public static void d(String format, Object... args) {
     LOGGER.debug(format, args);
@@ -48,7 +48,7 @@ public class Log {
   }
 
   /**
-   * Send a formatted ERROR log message and log the exception.
+   * Send a formatted ERROR log message.
    */
   public static void e(String format, Object... args) {
     LOGGER.error(format, args);
@@ -69,7 +69,7 @@ public class Log {
   }
 
   /**
-   * Send a formatted INFO log message and log the exception.
+   * Send a formatted INFO log message.
    */
   public static void i(String format, Object... args) {
     LOGGER.info(format, args);
@@ -90,7 +90,7 @@ public class Log {
   }
 
   /**
-   * Send a formatted TRACE log message and log the exception.
+   * Send a formatted TRACE log message.
    */
   public static void t(String format, Object... args) {
     LOGGER.trace(format, args);
@@ -111,7 +111,7 @@ public class Log {
   }
 
   /**
-   * Send a formatted WARN log message and log the exception.
+   * Send a formatted WARN log message.
    */
   public static void w(String format, Object... args) {
     LOGGER.warn(format, args);
