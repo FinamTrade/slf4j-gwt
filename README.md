@@ -8,31 +8,31 @@ logging framework supported since GWT 2.1. All logging messages are printed to d
 
 Usage
 ---
-slf4j-gwt is available in [maven central](http://search.maven.org/#artifactdetails%7Cru.finam%7Cslf4j-gwt%7C1.1%7Cjar)
+slf4j-gwt is available in [maven central](http://search.maven.org/#artifactdetails%7Cru.finam%7Cslf4j-gwt%7C1.2%7Cjar)
 
 Just include it in your pom.xml
 ```xml
 <dependency>
     <groupId>ru.finam</groupId>
     <artifactId>slf4j-gwt</artifactId>
-    <version>1.1</version>
+    <version>1.2</version>
 </dependency>
 ```
 or gradle build:
 ```groovy
 dependencies {
-    compile 'ru.finam:slf4j-gwt:1.1'
+    compile 'ru.finam:slf4j-gwt:1.2'
 }
 ```
 
 or ivy:
 ```xml
-<dependency org="ru.finam" name="slf4j-gwt" rev="1.1" />
+<dependency org="ru.finam" name="slf4j-gwt" rev="1.2" />
 ```
 
 Add dependency in your gwt module descriptor (*.gwt.xml):
 ```xml
-<inherits name="ru.finam.slf4jgwt.logging.gwt.GwtLogging"/>
+<inherits name="ru.finam.slf4jgwt.logging.gwt.Logging"/>
 ```
 
 You can also set logging level (ALL, FINEST, FINER, FINE, CONFIG, INFO, WARNING, SEVERE):
@@ -47,10 +47,13 @@ Enable or disable gwt logging:
 
 If you want to provide slf4j API (e.g., in library module):
 ```xml
-<inherits name="ru.finam.slf4jgwt.API"/>
+<inherits name="ru.finam.slf4jgwt.api.API"/>
 ```
 
-If you want to provide slf4j but not to log anything in your application:
+If you want to provide slf4j but to not log anything in your application:
 ```xml
-<inherits name="ru.finam.slf4jgwt.logging.nop.NopLogging"/>
+<inherits name="ru.finam.slf4jgwt.logging.nop.NOP"/>
 ```
+
+ru.finam.slf4jgwt.logging.util.Util module provides a handful Log class to
+log messages without instantiating Logger in client code.
