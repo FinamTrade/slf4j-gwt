@@ -4,7 +4,7 @@ Simple slf4j api implementation for GWT
 The aim of this project is to provide developers with an implementation of the
 [Simple Logging Facade for Java (SLF4J 1.7.6)](http://www.slf4j.org/) API for the GWT client side.
 Right now the project provides the basic implementation of the SLF4J API using the java.util.logging (JUL)
-logging framework supported since GWT 2.1. All logging messages are printed to developer/firebug console.
+logging framework supported since [GWT 2.1](http://www.gwtproject.org/). All logging messages are printed to developer/firebug console.
 
 Usage
 ---
