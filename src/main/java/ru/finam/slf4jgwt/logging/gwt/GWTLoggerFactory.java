@@ -3,6 +3,8 @@ package ru.finam.slf4jgwt.logging.gwt;
 import org.slf4j.ILoggerFactory;
 import org.slf4j.Logger;
 
+import java.util.HashMap;
+
 /**
  * GWTLoggerFactory is an implementation of {@link org.slf4j.ILoggerFactory}
  * returning the appropriately named {@link GWTLoggerAdapter} instance.
@@ -10,7 +12,7 @@ import org.slf4j.Logger;
  * @author Andrei Korzhevskii <a.korzhevskiy@gmail.com>
  */
 public class GWTLoggerFactory implements ILoggerFactory {
-  private final FastStringMap<Logger> loggers = FastStringMap.create();
+  private final HashMap<String, Logger> loggers = new HashMap<String, Logger>();
 
   @Override
   public Logger getLogger(String name) {
