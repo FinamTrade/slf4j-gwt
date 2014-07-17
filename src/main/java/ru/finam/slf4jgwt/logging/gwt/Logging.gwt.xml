@@ -1,27 +1,19 @@
 <module>
-    <inherits name="ru.finam.slf4jgwt.api.API"/>
-    <inherits name="com.google.gwt.logging.Logging"/>
+  <inherits name="ru.finam.slf4jgwt.api.API"/>
+  <inherits name="com.google.gwt.logging.Logging"/>
 
-    <set-property name="gwt.logging.enabled" value="TRUE"/>
-    <set-property name="gwt.logging.logLevel" value="INFO"/>
+  <source path=""/>
 
-    <set-property name="gwt.logging.consoleHandler" value="ENABLED" />
-    <set-property name="gwt.logging.developmentModeHandler" value="ENABLED" />
-    <set-property name="gwt.logging.firebugHandler" value="DISABLED" />
-    <set-property name="gwt.logging.hasWidgetsHandler" value="DISABLED" />
-    <set-property name="gwt.logging.popupHandler" value="DISABLED" />
-    <set-property name="gwt.logging.systemHandler" value="ENABLED" />
-    <set-property name="gwt.logging.simpleRemoteHandler" value="DISABLED" />
+  <replace-with class="org.slf4j.helpers.NOPLoggerFactory">
+    <when-type-is class="org.slf4j.ILoggerFactory"/>
+  </replace-with>
 
-    <source path="" />
-
-    <replace-with class="org.slf4j.helpers.NOPLoggerFactory">
-        <when-type-is class="org.slf4j.ILoggerFactory" />
-        <when-property-is name="gwt.logging.enabled" value="FALSE" />
-    </replace-with>
-
-    <replace-with class="ru.finam.slf4jgwt.logging.gwt.GWTLoggerFactory">
-        <when-type-is class="org.slf4j.ILoggerFactory" />
-        <when-property-is name="gwt.logging.enabled" value="TRUE" />
-    </replace-with>
+  <replace-with class="ru.finam.slf4jgwt.logging.gwt.GWTLoggerFactory">
+    <when-type-is class="org.slf4j.ILoggerFactory"/>
+    <any>
+      <when-property-is name="gwt.logging.enabled" value="TRUE"/>
+      <when-property-is name="gwt.logging.enabled" value="SEVERE"/>
+      <when-property-is name="gwt.logging.enabled" value="WARNING"/>
+    </any>
+  </replace-with>
 </module>
