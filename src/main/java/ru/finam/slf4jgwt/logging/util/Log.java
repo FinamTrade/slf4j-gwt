@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
  *
  * @author Andrei Korzhevskii <a.korzhevskiy@gmail.com>
  */
-public class Log {
+public final class Log {
   private static final Logger LOGGER = LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME);
 
   /**

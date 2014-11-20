@@ -1,5 +1,5 @@
 <module>
-    <inherits name="ru.finam.slf4jgwt.api.API"/>
+    <inherits name="ru.finam.slf4jgwt.logging.impl.LoggingImpl"/>
 
     <replace-with class="org.slf4j.helpers.NOPLoggerFactory">
         <when-type-is class="org.slf4j.ILoggerFactory" />

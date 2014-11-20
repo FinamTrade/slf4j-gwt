@@ -1,5 +1,5 @@
 <module>
-  <inherits name="ru.finam.slf4jgwt.api.API"/>
+  <inherits name="ru.finam.slf4jgwt.logging.impl.LoggingImpl"/>
   <inherits name="com.google.gwt.logging.Logging"/>
 
   <source path=""/>
@@ -10,10 +10,8 @@
 
   <replace-with class="ru.finam.slf4jgwt.logging.gwt.GWTLoggerFactory">
     <when-type-is class="org.slf4j.ILoggerFactory"/>
-    <any>
-      <when-property-is name="gwt.logging.enabled" value="TRUE"/>
-      <when-property-is name="gwt.logging.enabled" value="SEVERE"/>
-      <when-property-is name="gwt.logging.enabled" value="WARNING"/>
-    </any>
+    <none>
+      <when-property-is name="gwt.logging.enabled" value="FALSE"/>
+    </none>
   </replace-with>
 </module>

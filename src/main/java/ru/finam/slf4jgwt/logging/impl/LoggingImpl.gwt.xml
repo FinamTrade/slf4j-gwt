@@ -1,0 +1,5 @@
+<module>
+    <inherits name="ru.finam.slf4jgwt.api.API"/>
+
+    <source path=""/>
+</module>

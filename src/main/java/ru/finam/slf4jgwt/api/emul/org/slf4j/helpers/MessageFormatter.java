@@ -24,6 +24,8 @@
  */
 package org.slf4j.helpers;
 
+import com.google.gwt.core.client.GWT;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -224,7 +226,7 @@ public class MessageFormatter {
                         // we have to consume one backward slash
                         sbuf.append(messagePattern.substring(i, j - 1));
                         if (seenSet == null) {
-                            seenSet = new HashSet<Object>();
+                            seenSet = new HashSet<Object>(); // TODO: use IdentityHashSet?
                         }
                         deeplyAppendParameter(sbuf, argArray[L], seenSet);
                         i = j + 2;
@@ -233,7 +235,7 @@ public class MessageFormatter {
                     // normal case
                     sbuf.append(messagePattern.substring(i, j));
                     if (seenSet == null) {
-                        seenSet = new HashSet<Object>();
+                        seenSet = new HashSet<Object>(); // TODO: use IdentityHashSet?
                     }
                     deeplyAppendParameter(sbuf, argArray[L], seenSet);
                     i = j + 2;
@@ -300,13 +302,16 @@ public class MessageFormatter {
 
     private static void safeObjectAppend(StringBuilder sbuf, Object o) {
         try {
-            String oAsString = o.toString();
-            sbuf.append(oAsString);
+            sbuf.append(o.toString());
         } catch (Throwable t) {
+            GWT.log("SLF4J: Failed toString() invocation on an object of type ["
+                    + o.getClass().getName() + "]", t);
+/*
             System.err
                     .println("SLF4J: Failed toString() invocation on an object of type ["
                             + o.getClass().getName() + "]");
             t.printStackTrace();
+*/
             sbuf.append("[FAILED toString()]");
         }
 

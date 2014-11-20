@@ -24,6 +24,8 @@
  */
 package org.slf4j.helpers;
 
+import java.util.Arrays;
+
 /**
  * Holds the results of formatting done by {@link MessageFormatter}.
  *
@@ -51,12 +53,15 @@ public class FormattingTuple {
 
     static Object[] trimmedCopy(Object[] argArray) {
         if(argArray == null || argArray.length == 0) {
-            throw new  IllegalStateException("non-sensical empty or null argument array");
+            throw new IllegalStateException("non-sensical empty or null argument array");
         }
+        return Arrays.copyOf(argArray, argArray.length - 1);
+/*
         final int trimemdLen = argArray.length -1;
         Object[] trimmed = new Object[trimemdLen];
         System.arraycopy(argArray, 0, trimmed, 0, trimemdLen);
         return trimmed;
+*/
     }
 
     public String getMessage() {

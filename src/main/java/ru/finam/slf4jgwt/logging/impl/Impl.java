@@ -1,4 +1,4 @@
-package ru.finam.slf4jgwt.api.impl;
+package ru.finam.slf4jgwt.logging.impl;
 
 import com.google.gwt.core.client.GWT;
 import org.slf4j.ILoggerFactory;

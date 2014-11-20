@@ -5,8 +5,6 @@ apply plugin: 'eclipse'
 
 apply plugin: 'nexus'
 
-group 'ru.finam'
-
 buildscript {
     repositories {
         mavenCentral()
@@ -15,6 +13,10 @@ buildscript {
     dependencies {
         classpath 'org.gradle.api.plugins:gradle-nexus-plugin:0.6.1'
     }
+}
+
+repositories {
+    mavenCentral()
 }
 
 jar {
@@ -38,9 +40,11 @@ idea {
     }
 }
 
-repositories {
-    mavenCentral()
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.10'
 }
+
+group 'ru.finam'
 
 compileJava.options.encoding = 'UTF-8'
 compileTestJava.options.encoding = 'UTF-8'
@@ -50,17 +54,13 @@ targetCompatibility = '1.6'
 configurations { gwtCompile }
 
 dependencies {
-    gwtCompile 'com.google.gwt:gwt-dev:2.5.1'
-    compile 'com.google.gwt:gwt-user:2.5.1'
-    compile 'org.slf4j:slf4j-api:1.7.6'
+    gwtCompile 'com.google.gwt:gwt-dev:2.7.0'
+    compile 'com.google.gwt:gwt-user:2.7.0'
+    compile 'org.slf4j:slf4j-api:1.7.7'
 }
 
 sourceSets {
-    main.compileClasspath += configurations.gwtCompile
-}
-
-task wrapper(type: Wrapper) {
-    gradleVersion = '1.10'
+    main.compileClasspath += [ configurations.gwtCompile ]
 }
 
 modifyPom {
