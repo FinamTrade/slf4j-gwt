@@ -32,6 +32,8 @@ jar {
     dependsOn classes
     from project.sourceSets.main.allSource
     includes = ['**/*']
+    excludes = ['org/slf4j/**']
+    includeEmptyDirs = false
 }
 
 idea {
@@ -41,7 +43,7 @@ idea {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '1.10'
+    gradleVersion = '2.3'
 }
 
 group 'ru.finam'
