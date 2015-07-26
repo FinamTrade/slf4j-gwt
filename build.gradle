@@ -56,9 +56,11 @@ targetCompatibility = '1.6'
 configurations { gwtCompile }
 
 dependencies {
+    // Assuming user already added gwt and slf4j libraries to his/her compile classpath.
+    // This is done to not interfere with different versions of user's gwt and slf4j libraries.
     gwtCompile 'com.google.gwt:gwt-dev:2.7.0'
-    compile 'com.google.gwt:gwt-user:2.7.0'
-    compile 'org.slf4j:slf4j-api:1.7.7'
+    gwtCompile 'com.google.gwt:gwt-user:2.7.0'
+    gwtCompile 'org.slf4j:slf4j-api:1.7.7'
 }
 
 sourceSets {
